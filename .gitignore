@@ -13,6 +13,8 @@ logs
 results
 tmp
 
+config/properties.file
+
 #Build
 public/css/main.css
 

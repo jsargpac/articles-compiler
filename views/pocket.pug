@@ -1,0 +1,27 @@
+extends layout
+
+block content
+  .page-header
+    h3 Import articles from Pocket
+  form.form-horizontal(id='signup-form', method='POST', action="/pocket/import")
+    input(type='hidden', name='_csrf', value=_csrf)
+    .form-group
+      .col-sm-offset-3.col-sm-7
+        button.btn.btn-success(type='submit')
+          i.fa.fa-user-plus
+          | Importer Pocket
+
+  .page-header
+    h3 Articles list
+
+  ul
+    table.table.table-hover
+        tbody
+          each article in articles
+            tr
+              - var url = article.url
+              td
+                a(href=url) #{article.title}
+              td=article.word_count
+              td=article.favorite
+              td=article.already_imported
