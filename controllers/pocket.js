@@ -8,7 +8,7 @@ var async = require('async');
 var PropertiesReader = require('properties-reader');
 
 const article = require('../models/Article.js');
-var properties = PropertiesReader('/config/properties.file');
+var properties = PropertiesReader(__dirname + '/properties.file');
 
 /**
  * GET /pocket
@@ -28,13 +28,13 @@ exports.getPocket = (req, res) => {
  */
 exports.importPocket = (req, res, next) => {
 
-    function authPocket() {
+    function retrieveFromPocket() {
         var pocketAuthUrl = "https://getpocket.com/v3/oauth/request";
         var pocketLoginUrl = "https://getpocket.com/auth/authorize";
         var pocketGet = "https://getpocket.com/v3/get";
         var http = new XMLHttpRequest();
-        var consumerKey = properties.pocket.consumer_key;
-        var accessToken = properties.pocket.access_token;
+        var consumerKey = properties.get('pocket.consumer_key');
+        var accessToken = properties.get('pocket.access_token');
         var count = 10000;
         var offset = 2;
 
@@ -45,8 +45,6 @@ exports.importPocket = (req, res, next) => {
         http.onreadystatechange = function () {
             if (http.readyState == 4 && http.status == 200) {
                 var response = JSON.parse(http.responseText);
-                //console.log(response);
-                //var articles = response.dataset.data.map(function (value, index) { return value[0]; });
                 var n = 0;
                 for (var id in response['list']) {
                     console.log(response['list'][id]['resolved_url']);
@@ -71,6 +69,6 @@ exports.importPocket = (req, res, next) => {
         http.send();
     }
 
-    authPocket();
-    
+    retrieveFromPocket();
+
 };

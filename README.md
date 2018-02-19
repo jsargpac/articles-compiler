@@ -2,7 +2,7 @@ Articles compiler
 =======================
 
 Compiler of the articles history of the reader. It retrieves articles from Pocket and uses [Mercury Web Parser](https://mercury.postlight.com/web-parser/) to get article content.
-The articles are stored on a noSQL database (MongoDB) and can be analyzed to extract some usefuls indicators.
+The articles are stored on a noSQL database (MongoDB) and can be analyzed to extract some useful indicators.
 
 | Source | Supported |
 |----------|------|

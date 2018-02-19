@@ -34,6 +34,7 @@ const homeController = require('./controllers/home');
 const userController = require('./controllers/user');
 const contactController = require('./controllers/contact');
 const pocketController = require('./controllers/pocket');
+const mercuryController = require('./controllers/mercury');
 
 /**
  * API keys and Passport configuration.
@@ -137,6 +138,8 @@ app.post('/contact', contactController.postContact);
 
 app.get('/pocket', pocketController.getPocket);
 app.post('/pocket/import', pocketController.importPocket);
+app.get('/mercury', mercuryController.getMercury);
+app.post('/mercury/import', mercuryController.importMercury);
 
 app.get('/account', passportConfig.isAuthenticated, userController.getAccount);
 app.post('/account/profile', passportConfig.isAuthenticated, userController.postUpdateProfile);

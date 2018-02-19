@@ -7,6 +7,10 @@ const articleSchema = new mongoose.Schema({
     favorite: {type: Boolean, default: false},
     excerpt: String,
     content: String,
+    date: Date,
+    domain: String,
+    dek: String,
+    word_count_mercury: Number,
     tags: [{
     	type: String
     }],

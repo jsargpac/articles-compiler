@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  .page-header
+    h3 Import articles content
+  form.form-horizontal(id='signup-form', method='POST', action="/mercury/import")
+    input(type='hidden', name='_csrf', value=_csrf)
+    .form-group
+      .col-sm-offset-3.col-sm-7
+        button.btn.btn-success(type='submit')
+          i.fa.fa-user-plus
+          | Import with Mercury
+
+  .page-header
+    h3 Articles list

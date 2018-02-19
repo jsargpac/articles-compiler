@@ -14,6 +14,7 @@ results
 tmp
 
 config/properties.file
+controllers/properties.file
 
 #Build
 public/css/main.css
